@@ -1,0 +1,7 @@
+# Exclure les fichiers de conception lourds et images locales de test
+*.procreate
+*.png
+*.JPEG
+*.jpg
+*.jpeg
+site_ptea_goutthe_v2.html
