@@ -340,8 +340,7 @@ h2.title{font-size:clamp(30px,4vw,44px);font-style:italic;font-weight:400;color:
 .photo-page{gap:6px;}
 .photo-page.grid-1{grid-template-columns:1fr;grid-template-rows:1fr;}
 .photo-page.grid-2{grid-template-columns:1fr 1fr;grid-template-rows:1fr;}
-.photo-page.grid-3{grid-template-columns:1fr 1fr 1fr;}
-.photo-page.grid-4{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;}
+.photo-page.grid-3,.photo-page.grid-4{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;}
 .photo-page.grid-5,.photo-page.grid-6{grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;}
 .ph{position:relative;border-radius:2px;overflow:hidden;display:flex;align-items:flex-end;padding:14px;background-size:cover;background-position:center;}
 .ph span{position:relative;z-index:1;color:#fff;font-family:'Fraunces',serif;font-style:italic;font-size:14px;text-shadow:0 2px 8px rgba(0,0,0,0.4);}
