@@ -205,9 +205,9 @@ async function renderHero() {
     return;
   }
 
-  track.innerHTML = images.map((img) => `
+  track.innerHTML = images.map((img, i) => `
     <div class="hero-slide">
-      <img src="${thumbUrl(img.id, 1800)}" alt="${escapeHtml(prettify(img.name))}" loading="lazy">
+      <img src="${thumbUrl(img.id, 1800)}" alt="${escapeHtml(prettify(img.name))}"${i === 0 ? "" : ' loading="lazy"'}>
       <div class="scrim"></div>
       <span class="label">${escapeHtml(prettify(img.name))}</span>
     </div>`).join("");
@@ -380,7 +380,6 @@ async function renderMenu() {
     return;
   }
 
-  let num = 1;
   const sommaireHtml = [];
   const catHtml = [];
   const photoHtml = [];
@@ -406,9 +405,18 @@ async function renderMenu() {
     }
   }
 
-  for (const [slug, cat] of categories) {
+  // Le libellé du sommaire ne dépend d'aucun appel réseau : on le construit
+  // tout de suite, dans l'ordre, pendant que les photos de chaque catégorie
+  // se chargent toutes en parallèle (au lieu d'attendre l'une après l'autre).
+  const categoryEntries = [...categories.entries()];
+  categoryEntries.forEach(([slug, cat], idx) => {
     sommaireHtml.push(`
-      <li><button data-cat="${slug}"><span>${escapeHtml(cat.label)}</span><span class="num">${String(num).padStart(2, "0")}</span></button></li>`);
+      <li><button data-cat="${slug}"><span>${escapeHtml(cat.label)}</span><span class="num">${String(idx + 1).padStart(2, "0")}</span></button></li>`);
+  });
+
+  const categoryPages = await Promise.all(categoryEntries.map(async ([slug, cat]) => {
+    let catPageHtml = "";
+    let photoPageHtml = "";
 
     if (cat.isPhotoOnly) {
       try {
@@ -428,7 +436,7 @@ async function renderMenu() {
         }
 
         // Page gauche (normalement le texte, ici une grille de photos)
-        catHtml.push(`
+        catPageHtml = `
           <div class="cat-page" data-cat="${slug}">
             <button class="back">← Sommaire</button>
             <h3>${escapeHtml(cat.label)}</h3>
@@ -441,31 +449,31 @@ async function renderMenu() {
                     </div>`).join("")}
                 </div>` : `<p style="font-style:italic;color:var(--brown-soft);margin-top:20px;">Découvrez notre sélection de ${escapeHtml(cat.label.toLowerCase())} directement au salon.</p>`}
             </div>
-          </div>`);
+          </div>`;
 
         // Page droite (grille de photos)
         if (rightImgs.length) {
-          photoHtml.push(`
+          photoPageHtml = `
             <div class="photo-page grid-${rightImgs.length}" data-photos="${slug}">
               ${rightImgs.map((img, i) => `
                 <div class="ph p${(i % 4) + 1}" style="background-image:url('${thumbUrl(img.id, 900)}')">
                   <span>${escapeHtml(prettify(img.name))}</span>
                 </div>`).join("")}
-            </div>`);
+            </div>`;
         } else {
-          photoHtml.push(`
+          photoPageHtml = `
             <div class="photo-page" data-photos="${slug}">
               <div class="idle-art">
                 <p style="font-style:italic;">Collection ${escapeHtml(cat.label)}</p>
               </div>
-            </div>`);
+            </div>`;
         }
       } catch (err) {
         console.warn(`Photos de la catégorie photo seule "${cat.label}" introuvables :`, err);
       }
     } else {
       // Page gauche classique (liste d'articles)
-      catHtml.push(`
+      catPageHtml = `
         <div class="cat-page" data-cat="${slug}">
           <button class="back">← Sommaire</button>
           <h3>${escapeHtml(cat.label)}</h3>
@@ -482,7 +490,7 @@ async function renderMenu() {
                 <div class="price">${escapeHtml(it.price)}</div>
               </div>`).join("")}
           </div>
-        </div>`);
+        </div>`;
 
       // Page droite classique (grille de photos)
       const folderId = cat.folderId;
@@ -490,21 +498,27 @@ async function renderMenu() {
         try {
           const imgs = (await driveListImages(folderId)).slice(0, 4);
           if (imgs.length) {
-            photoHtml.push(`
+            photoPageHtml = `
               <div class="photo-page grid-${imgs.length}" data-photos="${slug}">
                 ${imgs.map((img, i) => `
                   <div class="ph p${(i % 4) + 1}" style="background-image:url('${thumbUrl(img.id, 900)}')">
                     <span>${escapeHtml(prettify(img.name))}</span>
                   </div>`).join("")}
-              </div>`);
+              </div>`;
           }
         } catch (err) {
           console.warn(`Photos de la catégorie "${cat.label}" introuvables :`, err);
         }
       }
     }
-    num++;
-  }
+
+    return { catPageHtml, photoPageHtml };
+  }));
+
+  categoryPages.forEach(({ catPageHtml, photoPageHtml }) => {
+    if (catPageHtml) catHtml.push(catPageHtml);
+    if (photoPageHtml) photoHtml.push(photoPageHtml);
+  });
 
   sommaireList.innerHTML = sommaireHtml.join("");
   catHost.innerHTML = catHtml.join("");
