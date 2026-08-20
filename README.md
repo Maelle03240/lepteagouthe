@@ -59,10 +59,10 @@ Un tableau avec une ligne d'en-tête et 4 colonnes, dans cet ordre :
 2. Menu ☰ → *APIs & Services* → *Library* : active **Google Drive API**
    et **Google Sheets API**.
 3. *APIs & Services* → *Credentials* → *Create credentials* → *API key*.
-4. Une fois le site en ligne (étape 5), reviens restreindre la clé :
+4. Une fois le site en ligne (étape 6), reviens restreindre la clé :
    *Application restrictions* → *Websites* → ajoute l'URL de ton site
-   (ex: `https://tonpseudo.github.io/*`). Ça évite que quelqu'un
-   d'autre réutilise ta clé.
+   (ex: `https://tonpseudo.github.io/*`, ou `https://ton-site.vercel.app/*`
+   si tu utilises Vercel). Ça évite que quelqu'un d'autre réutilise ta clé.
 
 ## 4. Remplir `js/config.js`
 
@@ -86,13 +86,20 @@ python -m http.server 8000
 
 puis ouvre `http://localhost:8000` dans ton navigateur.
 
-## 6. Mettre en ligne sur GitHub Pages
+## 6. Mettre en ligne (GitHub Pages ou Vercel)
 
+**GitHub Pages :**
 1. Crée un dépôt GitHub, pousse tous ces fichiers dedans (à la racine).
 2. *Settings* → *Pages* → *Source* : branche `main`, dossier `/ (root)`.
 3. Ton site sera visible à `https://tonpseudo.github.io/nom-du-depot/`
    après une à deux minutes.
-4. Reviens à l'étape 3 pour restreindre ta clé API à cette URL.
+
+**Vercel :** connecte le même dépôt GitHub sur vercel.com → *Add New Project*.
+Aucune configuration de build n'est nécessaire (site statique). Le site est
+visible à `https://nom-du-projet.vercel.app/` après le déploiement.
+
+Dans les deux cas, reviens à l'étape 3 pour restreindre ta clé API à cette
+URL.
 
 ## Notes
 
