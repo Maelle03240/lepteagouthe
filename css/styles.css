@@ -300,6 +300,16 @@ h2.title{font-size:clamp(30px,4vw,44px);font-style:italic;font-weight:400;color:
 }
 
 .sommaire h3{font-size:15px;letter-spacing:0.25em;text-transform:uppercase;color:var(--pink-deep);margin-bottom:26px;}
+.sommaire-note{
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px;
+  color:var(--brown-soft);
+  text-align:center;
+  margin-top:28px;
+  letter-spacing:0.04em;
+  opacity:0.8;
+  text-transform:uppercase;
+}
 .sommaire-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
 .sommaire-list button{
   all:unset;display:flex;justify-content:space-between;align-items:baseline;
