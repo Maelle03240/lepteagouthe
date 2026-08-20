@@ -333,6 +333,18 @@ async function renderMenu() {
     const label = (row.categorie || "").trim();
     if (!label) continue;
     const slug = slugify(label);
+    
+    // Si c'est la formule spéciale pour le bas du sommaire, on met à jour la note et on l'exclut du livre
+    if (slug === "formule") {
+      const noteEl = document.getElementById("sommaireNote");
+      if (noteEl) {
+        const name = (row.nom || "").trim();
+        const price = (row.prix || "").trim();
+        noteEl.textContent = `Formule : ${name} — ${price}`;
+      }
+      continue; // Exclure cette ligne des pages classiques du livre
+    }
+
     if (!categories.has(slug)) {
       categories.set(slug, { label, items: [], isPhotoOnly: false });
     }
