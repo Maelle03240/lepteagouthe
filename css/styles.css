@@ -354,14 +354,34 @@ h2.title{font-size:clamp(30px,4vw,44px);font-style:italic;font-weight:400;color:
 
 
 @media (max-width: 760px){
-  .book{flex-direction:column;aspect-ratio:auto;height:auto;}
+  .book-stage{padding: 0 16px; margin-top: 30px;}
+  .book{flex-direction:column;aspect-ratio:auto;height:auto; box-shadow: 0 20px 40px rgba(91,58,41,0.2);}
   .book-pages{position:relative;flex-direction:column;}
-  .page{padding:28px 24px;min-height:340px;}
+  .page{padding:28px 24px;min-height:340px; height: auto !important;}
   .book-spine{display:none;}
   .book-cover{position:relative;aspect-ratio:4/5;}
   .book.cover .book-pages{display:none;}
   .book:not(.cover) .book-cover{display:none;}
   .book-cover img{width:160px;height:160px;margin-bottom:16px;}
+
+  /* Déverrouille la hauteur et le défilement du contenu sur mobile */
+  .cat-items {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Force les grilles d'images à s'empiler verticalement sur mobile */
+  .photo-page.active {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    height: auto !important;
+  }
+  .ph {
+    width: 100% !important;
+    aspect-ratio: 4/3 !important;
+    height: auto !important;
+  }
 }
 
 /* ===== CONTACT & HORAIRES ===== */
