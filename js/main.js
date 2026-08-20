@@ -509,6 +509,14 @@ function wireBookInteractions() {
   const sommaireView = document.getElementById("sommaireView");
   const idleArt = document.getElementById("idleArt");
 
+  const bookPages = document.getElementById("bookPages");
+  function triggerFlipShadow() {
+    if (!bookPages) return;
+    bookPages.classList.remove("flipping");
+    void bookPages.offsetWidth; // force le redémarrage de l'animation CSS
+    bookPages.classList.add("flipping");
+  }
+
   function openBook() {
     book.classList.remove("cover");
   }
@@ -557,7 +565,6 @@ function wireBookInteractions() {
   }
 
   function showSommaire() {
-    triggerFlipShadow();
     sommaireView.classList.remove("hidden");
     document.querySelectorAll(".cat-page").forEach((p) => p.classList.remove("active"));
     
