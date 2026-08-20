@@ -214,10 +214,26 @@ h2.title{font-size:clamp(30px,4vw,44px);font-style:italic;font-weight:400;color:
   .cat-page.active, .photo-page.active{ transform:rotateY(0deg); opacity:1; pointer-events:auto; }
 }
 @media (max-width: 760px){
-  .sommaire, .cat-page, #idleArt, .photo-page{ inset:28px 24px; transition:opacity .35s ease; }
-  .sommaire.hidden, #idleArt.hidden{ opacity:0; pointer-events:none; }
-  .cat-page, .photo-page{ opacity:0; pointer-events:none; }
-  .cat-page.active, .photo-page.active{ opacity:1; pointer-events:auto; }
+  /* Sur mobile pas de superposition en absolu : chaque page prend sa place
+     dans le flux normal, sinon le contenu était coupé par la hauteur fixe
+     du parent et les clics sur des catégories cachées ne faisaient rien. */
+  .sommaire, .cat-page, #idleArt, .photo-page{ position:static; inset:auto; }
+  .cat-page{ display:none; }
+  .cat-page.active{ display:flex; }
+  .photo-page{ display:none; }
+  .photo-page.active{ display:grid; }
+  .sommaire.hidden, #idleArt.hidden{ display:none; }
+
+  /* Une seule page à la fois : elle "se retourne" à l'affichage */
+  .page-left, .page-right{ perspective:900px; }
+  .sommaire, .cat-page, #idleArt, .photo-page{
+    transform-origin:left center;
+    animation:pageFlipIn .45s cubic-bezier(0.25,1,0.5,1);
+  }
+}
+@keyframes pageFlipIn{
+  from{ transform:rotateY(90deg); opacity:0; }
+  to{ transform:rotateY(0deg); opacity:1; }
 }
 
 /* Coin corné pour refermer le livre (page blanche vers couverture marron) */
@@ -398,7 +414,7 @@ h2.title{font-size:clamp(30px,4vw,44px);font-style:italic;font-weight:400;color:
 
 footer.bottom{text-align:center;padding:26px 0;font-size:13px;color:var(--brown-soft);letter-spacing:0.03em;background:var(--cream);}
 
-@media (max-width: 800px){
+@media (max-width: 991px){
   nav ul{
     position:fixed;top:88px;left:0;right:0;background:var(--cream);
     flex-direction:column;align-items:center;gap:0;padding:12px 0;
@@ -410,6 +426,11 @@ footer.bottom{text-align:center;padding:26px 0;font-size:13px;color:var(--brown-
   nav a{display:block;padding:14px 0;}
   .nav-toggle{display:block;}
   .contact-split{grid-template-columns:1fr;}
-  .map-col{order:-1;height:260px;}
+  .map-col{height:260px;}
   .nav-logo img{width:46px;height:46px;}
+}
+
+/* Utilitaire d'affichage masqué */
+.hidden {
+  display: none !important;
 }
