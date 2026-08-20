@@ -198,35 +198,35 @@ h2.title{font-size:clamp(30px,4vw,44px);font-style:italic;font-weight:400;color:
 .page-right{box-shadow:inset 10px 0 20px -14px rgba(91,58,41,0.25);}
 
 /* Sommaire / catégorie ET idle-art / photos : la double page se tourne ensemble */
-.sommaire, .cat-page, #idleArt, .photo-page{ position:absolute; inset:40px 44px; }
+.sommaire, .cat-page, #idleArt, #photoPagesHost > .photo-page{ position:absolute; inset:40px 44px; }
 .cat-page{ display:flex; flex-direction:column; }
 .photo-page{ display:grid; }
 @media (min-width: 761px){
   .page-left, .page-right{ perspective:1200px; }
-  .sommaire, .cat-page, #idleArt, .photo-page{
+  .sommaire, .cat-page, #idleArt, #photoPagesHost > .photo-page{
     transition: transform .55s cubic-bezier(0.25,1,0.5,1), opacity .35s ease;
     transform-origin: left center;
     backface-visibility: hidden;
   }
   .sommaire, #idleArt{ transform:rotateY(0deg); opacity:1; }
   .sommaire.hidden, #idleArt.hidden{ transform:rotateY(-100deg); opacity:0; pointer-events:none; }
-  .cat-page, .photo-page{ transform:rotateY(100deg); opacity:0; pointer-events:none; }
-  .cat-page.active, .photo-page.active{ transform:rotateY(0deg); opacity:1; pointer-events:auto; }
+  .cat-page, #photoPagesHost > .photo-page{ transform:rotateY(100deg); opacity:0; pointer-events:none; }
+  .cat-page.active, #photoPagesHost > .photo-page.active{ transform:rotateY(0deg); opacity:1; pointer-events:auto; }
 }
 @media (max-width: 760px){
   /* Sur mobile pas de superposition en absolu : chaque page prend sa place
      dans le flux normal, sinon le contenu était coupé par la hauteur fixe
      du parent et les clics sur des catégories cachées ne faisaient rien. */
-  .sommaire, .cat-page, #idleArt, .photo-page{ position:static; inset:auto; }
+  .sommaire, .cat-page, #idleArt, #photoPagesHost > .photo-page{ position:static; inset:auto; }
   .cat-page{ display:none; }
   .cat-page.active{ display:flex; }
-  .photo-page{ display:none; }
-  .photo-page.active{ display:grid; }
+  #photoPagesHost > .photo-page{ display:none; }
+  #photoPagesHost > .photo-page.active{ display:grid; }
   .sommaire.hidden, #idleArt.hidden{ display:none; }
 
   /* Une seule page à la fois : elle "se retourne" à l'affichage */
   .page-left, .page-right{ perspective:900px; }
-  .sommaire, .cat-page, #idleArt, .photo-page{
+  .sommaire, .cat-page, #idleArt, #photoPagesHost > .photo-page{
     transform-origin:left center;
     animation:pageFlipIn .45s cubic-bezier(0.25,1,0.5,1);
   }
