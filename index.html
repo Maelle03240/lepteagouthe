@@ -1,164 +1,176 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Le Petit Goûter — Salon de thé & pâtisserie</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Petit Goûter — Salon de thé & pâtisserie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-<header>
-  <div class="nav-logo">
-    <img id="logoImg" src="" alt="" style="display:none;">
-    <span id="brandName">Le Petit Goûter</span>
-  </div>
-  <nav>
-    <ul>
-      <li><a href="#accueil">Accueil</a></li>
-      <li><a href="#carte">La carte</a></li>
-      <li><a href="#contact">Contact & horaires</a></li>
-    </ul>
-  </nav>
-  <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
-</header>
+  <header>
+    <div class="nav-logo">
+      <img id="logoImg" src="" alt="" style="display:none;">
+      <span id="brandName">Le Petit Goûter</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#carte">La carte</a></li>
+        <li><a href="#contact">Contact & horaires</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+  </header>
 
-<!-- ================= HERO — carrousel photos ================= -->
-<section class="hero" id="accueil">
-  <div class="hero-track" id="heroTrack"></div>
-  <button class="hero-arrow prev" id="heroPrev" aria-label="Photo précédente">‹</button>
-  <button class="hero-arrow next" id="heroNext" aria-label="Photo suivante">›</button>
-  <div class="hero-dots" id="heroDots"></div>
-</section>
+  <!-- ================= HERO — carrousel photos ================= -->
+  <section class="hero" id="accueil">
+    <div class="hero-track" id="heroTrack"></div>
+    <button class="hero-arrow prev" id="heroPrev" aria-label="Photo précédente">‹</button>
+    <button class="hero-arrow next" id="heroNext" aria-label="Photo suivante">›</button>
+    <div class="hero-dots" id="heroDots"></div>
+  </section>
 
-<!-- ================= LIVRE INTERACTIF — la carte ================= -->
-<section class="book-section" id="carte">
-  <div class="wrap">
-    <span class="eyebrow">Feuilletez</span>
-    <h2 class="title">La carte</h2>
-  </div>
+  <!-- ================= LIVRE INTERACTIF — la carte ================= -->
+  <section class="book-section" id="carte">
+    <div class="wrap">
+      <span class="eyebrow">Feuilletez</span>
+      <h2 class="title">La carte</h2>
+    </div>
 
-  <div class="book-stage">
-    <div class="book cover" id="bookEl">
+    <div class="book-stage">
+      <div class="book cover" id="bookEl">
 
-      <div class="book-cover" id="bookCover">
-        <img id="bookCoverImg" src="" alt="" style="display:none;">
-        <h2>La Carte</h2>
-        <p id="bookSubtitle">Nos thés, pâtisseries maison & douceurs</p>
-      </div>
-
-      <div class="book-pages" id="bookPages">
-        <div class="book-spine"></div>
-
-        <!-- PAGE GAUCHE -->
-        <div class="page page-left">
-          <div class="sommaire" id="sommaireView">
-            <h3>Sommaire</h3>
-            <ul class="sommaire-list" id="sommaireList"></ul>
-          </div>
-          <div id="catPagesHost"></div>
+        <div class="book-cover" id="bookCover">
+          <img id="bookCoverImg" src="" alt="" style="display:none;">
+          <h2>La Carte</h2>
+          <p id="bookSubtitle">Nos thés, pâtisseries maison & douceurs</p>
         </div>
 
-        <!-- PAGE DROITE -->
-        <div class="page page-right">
-          <div class="idle-art" id="idleArt">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="2"/></svg>
-            <p style="font-style:italic;">Choisissez une catégorie<br>pour voir les photos</p>
-          </div>
-          <div id="photoPagesHost"></div>
-          <div class="page-close-corner" id="closeCorner" title="Refermer le livre"></div>
-        </div>
+        <div class="book-pages" id="bookPages">
+          <div class="book-spine"></div>
 
+          <!-- PAGE GAUCHE -->
+          <div class="page page-left">
+            <div class="sommaire" id="sommaireView">
+              <h3>Sommaire</h3>
+              <ul class="sommaire-list" id="sommaireList"></ul>
+            </div>
+            <div id="catPagesHost"></div>
+          </div>
+
+          <!-- PAGE DROITE -->
+          <div class="page page-right">
+            <div class="idle-art" id="idleArt">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <div id="photoPagesHost"></div>
+            <div class="page-close-corner" id="closeCorner" title="Refermer le livre"></div>
+          </div>
+
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= CONTACT & HORAIRES ================= -->
-<section class="contact-block" id="contact">
-  <div class="wrap">
-    <span class="eyebrow">Nous trouver</span>
-    <h2 class="title">Contact & horaires</h2>
+  <!-- ================= CONTACT & HORAIRES ================= -->
+  <section class="contact-block" id="contact">
+    <div class="wrap">
+      <span class="eyebrow">Nous trouver</span>
+      <h2 class="title">Contact & horaires</h2>
 
-    <div class="contact-split">
-      <div class="contact-col">
-        <!-- Téléphone -->
-        <a id="phoneLink" href="#" class="contact-item clickable-row">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.2a1 .1 0 0 0 .25-1.02c-.36-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.37 10.63 21 20.01 21c.65 0 1-.59 1-1.13v-3.5c0-.54-.45-.99-.99-.99z"/>
-            </svg>
-          </div>
-          <div class="contact-text">
-            <span id="phoneText"></span>
-          </div>
-        </a>
+      <div class="contact-split">
+        <div class="contact-col">
+          <!-- Téléphone -->
+          <a id="phoneLink" href="#" class="contact-item clickable-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.2a1 .1 0 0 0 .25-1.02c-.36-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.37 10.63 21 20.01 21c.65 0 1-.59 1-1.13v-3.5c0-.54-.45-.99-.99-.99z" />
+              </svg>
+            </div>
+            <div class="contact-text">
+              <span id="phoneText"></span>
+            </div>
+          </a>
 
-        <!-- Email -->
-        <a id="emailLink" href="#" class="contact-item clickable-row">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
-          </div>
-          <div class="contact-text">
-            <span id="emailText"></span>
-          </div>
-        </a>
+          <!-- Email -->
+          <a id="emailLink" href="#" class="contact-item clickable-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div class="contact-text">
+              <span id="emailText"></span>
+            </div>
+          </a>
 
-        <!-- Instagram -->
-        <a id="instaLink" href="#" target="_blank" rel="noopener" class="contact-item clickable-row">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-            </svg>
-          </div>
-          <div class="contact-text">
-            <span id="instaText"></span>
-          </div>
-        </a>
+          <!-- Instagram -->
+          <a id="instaLink" href="#" target="_blank" rel="noopener" class="contact-item clickable-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </div>
+            <div class="contact-text">
+              <span id="instaText"></span>
+            </div>
+          </a>
 
-        <!-- Horaires -->
-        <div class="contact-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
-            </svg>
+          <!-- Horaires -->
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div class="contact-text" id="hoursText"></div>
           </div>
-          <div class="contact-text" id="hoursText"></div>
+
+          <!-- Lieux -->
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+                <line x1="9" y1="3" x2="9" y2="18" />
+                <line x1="15" y1="6" x2="15" y2="21" />
+              </svg>
+            </div>
+            <div class="contact-text">
+              <span id="addressLine"></span>
+            </div>
+          </div>
         </div>
 
-        <!-- Lieux -->
-        <div class="contact-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
-              <line x1="9" y1="3" x2="9" y2="18"/>
-              <line x1="15" y1="6" x2="15" y2="21"/>
-            </svg>
-          </div>
-          <div class="contact-text">
-            <span id="addressLine"></span>
-          </div>
+        <div class="map-col">
+          <iframe id="mapFrame" class="map-frame" src="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Localisation du salon"></iframe>
         </div>
-      </div>
-
-      <div class="map-col">
-        <iframe id="mapFrame" class="map-frame" src="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localisation du salon"></iframe>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer class="bottom">© <span id="year"></span> <span id="footerName">Le Petit Goûter</span></footer>
+  <footer class="bottom">© <span id="year"></span> <span id="footerName">Le Petit Goûter</span></footer>
 
-<script src="js/config.js"></script>
-<script src="js/main.js" defer></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
+
 </html>
