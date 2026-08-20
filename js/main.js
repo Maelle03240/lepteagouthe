@@ -333,14 +333,14 @@ async function renderMenu() {
     const label = (row.categorie || "").trim();
     if (!label) continue;
     const slug = slugify(label);
-    
+
     // Si c'est la formule spéciale pour le bas du sommaire, on met à jour la note et on l'exclut du livre
     if (slug === "formule") {
       const noteEl = document.getElementById("sommaireNote");
       if (noteEl) {
         const name = (row.nom || "").trim();
         const price = (row.prix || "").trim();
-        noteEl.textContent = `Formule : ${name} — ${price}`;
+        noteEl.textContent = `Formule : ${name}   ${price}`;
       }
       continue; // Exclure cette ligne des pages classiques du livre
     }
@@ -415,7 +415,7 @@ async function renderMenu() {
         const folderId = cat.folderId;
         const allImgs = await driveListImages(folderId);
         const imgs = allImgs.slice(0, 8); // Max 8 photos réparties sur la double page
-        
+
         let leftImgs = [];
         let rightImgs = [];
         if (imgs.length <= 4) {
@@ -564,7 +564,7 @@ function wireBookInteractions() {
   function showCategory(cat) {
     sommaireView.classList.add("hidden");
     document.querySelectorAll(".cat-page").forEach((p) => p.classList.toggle("active", p.dataset.cat === cat));
-    
+
     const hasPhotos = document.querySelector(`.photo-page[data-photos="${cat}"]`);
     idleArt.classList.toggle("hidden", Boolean(hasPhotos));
 
@@ -579,7 +579,7 @@ function wireBookInteractions() {
   function showSommaire() {
     sommaireView.classList.remove("hidden");
     document.querySelectorAll(".cat-page").forEach((p) => p.classList.remove("active"));
-    
+
     const sommairePhotos = document.querySelector('.photo-page[data-photos="sommaire"]');
     idleArt.classList.toggle("hidden", Boolean(sommairePhotos));
     if (sommairePhotos) {
