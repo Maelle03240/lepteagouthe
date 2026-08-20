@@ -138,7 +138,7 @@ h2.title{font-size:clamp(30px,4vw,44px);font-style:italic;font-weight:400;color:
   filter: drop-shadow(-7px -7px 8px rgba(0, 0, 0, 0.4));
 }
 
-.book-cover img{width:260px;height:260px;border-radius:50%;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,0.4);margin-bottom:22px;}
+.book-cover img{width:320px;height:320px;border-radius:50%;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,0.4);margin-bottom:22px;}
 .book-cover h2{font-size:40px;font-style:italic;color:var(--gold-pale);}
 .book-cover p{margin-top:12px;color:rgba(250,245,236,0.75);font-size:17px;}
 
@@ -371,7 +371,7 @@ h2.title{font-size:clamp(30px,4vw,44px);font-style:italic;font-weight:400;color:
   .book-cover{position:relative;aspect-ratio:4/5;}
   .book.cover .book-pages{display:none;}
   .book:not(.cover) .book-cover{display:none;}
-  .book-cover img{width:160px;height:160px;margin-bottom:16px;}
+  .book-cover img{width:200px;height:200px;margin-bottom:16px;}
 
   /* Déverrouille la hauteur et le défilement du contenu sur mobile */
   .cat-items {

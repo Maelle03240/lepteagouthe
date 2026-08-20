@@ -178,7 +178,7 @@ async function renderHero() {
       if (logoFid) {
         const logoImgs = await driveListImages(logoFid);
         if (logoImgs[0]) {
-          const url = thumbUrl(logoImgs[0].id, 300);
+          const url = thumbUrl(logoImgs[0].id, 600);
           const logoEl = document.getElementById("logoImg");
           logoEl.src = url;
           logoEl.alt = CONFIG.business.name;
